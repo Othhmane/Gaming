@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using StarterAssets;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using UnityEngine.Lumin;
+using Unity.Netcode;
 
 #if ENABLE_INPUT_SYSTEM
 [RequireComponent(typeof(PlayerInput))]
 #endif
 
-public class PlayerMovementTutorial : MonoBehaviour
+
+
+public class PlayerMovementTutorial : NetworkBehaviour
 {
-        [Tooltip("How fast the character turns to face movement direction")]
+    [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
 
@@ -168,7 +165,10 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     private void Start()
         {
-            _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+        Transform parentTransform = transform;
+        CinemachineCameraTarget = parentTransform.GetChild(0).gameObject;
+        orientation = parentTransform.GetChild(0).gameObject.transform;
+        _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             _input = GetComponent<StarterAssetsInputs>();
             rb = GetComponent<Rigidbody>();
             rb.freezeRotation = true;
