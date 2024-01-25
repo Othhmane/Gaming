@@ -92,7 +92,7 @@ MonoBehaviour:
   - {fileID: 6125877970729353327}
   projectile: {fileID: 4648586786531320531, guid: a5174b0252e71044a93d5c6907b9bae2,
     type: 3}
-  target: {fileID: 440449775408231751, guid: 8cc77ced8e6e50a45a1eb0e5862b6f5a, type: 3}
+  target: {fileID: 0}
   fieldofview: 30
 --- !u!1 &2459340263584402417
 GameObject:

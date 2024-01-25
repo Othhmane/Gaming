@@ -6,11 +6,10 @@ using UnityEngine;
 public class Launcher : MonoBehaviour
 {
     public float speed;
-    GameObject target;
+    public GameObject target;
     Vector3 lastPosition;
     Quaternion lookAtRotation;
     GameObject TurretHead;
-
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +17,8 @@ public class Launcher : MonoBehaviour
         // Assuming this script is attached to the parent GameObject
         Transform parentTransform = transform;
         TurretHead = parentTransform.GetChild(2).gameObject;
+        gameObject.GetComponent<ShootingSystem>().enabled = false;
+
     }
 
     // Update is called once per frame
@@ -50,12 +51,16 @@ public class Launcher : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.CompareTag("Player")) {
             gameObject.GetComponent<ShootingSystem>().enabled = true;
-            target = collision.gameObject;
+            //target = collision.gameObject;
+            Transform parentTransformTarget = transform;
+            parentTransformTarget = collision.gameObject.transform;
+            target = parentTransformTarget.GetChild(0).gameObject;
         }
     }
 }

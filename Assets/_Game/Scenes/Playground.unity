@@ -135,6 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73639184}
+  - component: {fileID: 73639185}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -158,6 +159,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &73639185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73639183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a4eb67121cad94dbd34dfa6f47965a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: c98a005a6b2c79c4ea505069cdb6f341, type: 3}
+  parentTransform: {fileID: 0}
 --- !u!4 &463767059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2070925442191277756, guid: a1a802ecaf6775746bb2a929fb554ad8,
@@ -1664,6 +1679,11 @@ PrefabInstance:
     - target: {fileID: 5886060400330560734, guid: 4d67bb35ff36a124488ed55b929c918e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327632574792488975, guid: 4d67bb35ff36a124488ed55b929c918e,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

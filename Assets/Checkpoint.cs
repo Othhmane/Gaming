@@ -9,8 +9,8 @@ public class Checkpoint : MonoBehaviour
     {
         if (player.CompareTag("Player"))
         {
-        player.gameObject.GetComponent<PlayerMovementTutorial>().CheckPoint = transform.position;
-        Debug.Log("checkpoint saved" + player.gameObject.GetComponent<PlayerMovementTutorial>().CheckPoint);
+        player.gameObject.GetComponent<PlayerController>().CheckPoint = transform.position;
+        Debug.Log("checkpoint saved" + player.gameObject.GetComponent<PlayerController>().CheckPoint);
         }
     }
 }

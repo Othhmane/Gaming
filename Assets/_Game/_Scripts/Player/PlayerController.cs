@@ -39,15 +39,6 @@ public class PlayerController : NetworkBehaviour
 
     [Header("Player Grounded")]
 
-    [Tooltip("Useful for rough ground")]
-    public float GroundedOffset = -0.14f;
-
-    [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
-    public float GroundedRadius = 0.28f;
-
-    [Tooltip("What layers the character uses as ground")]
-    public LayerMask GroundLayers;
-
     [Header("Cinemachine")]
     [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
     public GameObject CinemachineCameraTarget;
@@ -105,7 +96,7 @@ public class PlayerController : NetworkBehaviour
     [Header("Movement")]
     public Vector3 CurrentSpeed;
     public float moveSpeed;
-    public float SprintSpeed = 5.335f;
+    public float SprintSpeed;
     public float rotationSpeed = 45f;
     public float groundDrag;
     public bool Stunned;
@@ -200,9 +191,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, whatIsGround);
-
+        grounded = Physics.Raycast(rb.transform.position, Vector3.down,whatIsGround);
         MyInput();
         SpeedControl();
         _input.jump = false;
@@ -211,13 +200,21 @@ public class PlayerController : NetworkBehaviour
         if (grounded)
             rb.drag = groundDrag;
         else
+        {
             rb.drag = 0;
+        }
 
-        landing();
+        if (grounded)
+        {
+        _animator.SetBool(_animIDJump, false);
+        _animator.SetBool(_animIDFreeFall, false);
+        _animator.SetBool(_animIDGrounded, grounded);
+        }
     }
 
     private void FixedUpdate()
     {
+        // ground check
         PlayerStunHandle();
         if (CanMove)
         {
@@ -262,19 +259,6 @@ public class PlayerController : NetworkBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-
-    private void landing()
-    {
-        if (readyToJump && grounded)
-        {
-            _animator.SetBool(_animIDJump, false);
-            _animator.SetBool(_animIDFreeFall, false);
-            _animator.SetBool(_animIDGrounded, grounded);
-        }
-
-    }
-
-
     private void MyInput()
     {
         horizontalInput = _input.move.x;
@@ -287,12 +271,17 @@ public class PlayerController : NetworkBehaviour
             readyToJump = false;
 
             Jump();
-
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
     public Vector3 CheckPoint;
+    public Vector3 DebutCheck;
 
+    public void TeleportToDebut()
+    {
+        rb.velocity = Vector3.zero;
+        rb.MovePosition(DebutCheck);
+    }
     public void TeleportToCheckpoint()
     {
         rb.velocity = Vector3.zero;
@@ -335,7 +324,7 @@ public class PlayerController : NetworkBehaviour
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
-                float inputmagnitude = flatVel.x + flatVel.y + flatVel.z;
+                float inputmagnitude = rb.velocity.x + rb.velocity.y;
                 _animator.SetFloat(_animIDMotionSpeed, inputmagnitude);
             }
         }
@@ -343,10 +332,7 @@ public class PlayerController : NetworkBehaviour
         {
 
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            Debug.Log(limitedVel + "limit");
             Vector3 limitedWindVel = limitedVel + WindForce;
-            Debug.Log(limitedWindVel + "limit wind");
-            Debug.Log(rb.velocity + "speed");
             rb.velocity = new Vector3(limitedWindVel.x, rb.velocity.y, limitedWindVel.z);
             CurrentSpeed = rb.velocity;
             if (_hasAnimator)
