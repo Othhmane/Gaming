@@ -47,7 +47,12 @@ public class ShootingSystem : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            if (beam && lastprojectile.Count <= 0)
+        target = gameObject.GetComponent<Launcher>().target;
+        Debug.Log(gameObject.GetComponent<Launcher>().target);
+        if (target != null)
+        {
+
+        if (beam && lastprojectile.Count <= 0)
             {
                 float angle = Quaternion.Angle(TurretHead.transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
                 if (angle > fieldofview)
@@ -81,4 +86,5 @@ public class ShootingSystem : MonoBehaviour
                 }
             }
             }
+        }
         }

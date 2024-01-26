@@ -22,6 +22,7 @@ public class LobbyRoomPanel : MonoBehaviour {
         _nameText.text = lobby.Name;
         _typeText.text = Constants.GameTypes[GetValue(Constants.GameTypeKey)];
 
+
         var point = Mathf.InverseLerp(0, Constants.Difficulties.Count - 1, GetValue(Constants.DifficultyKey));
         _difficultyMeter.transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(_difficultyDialMaxAngle, -_difficultyDialMaxAngle, point));
 
