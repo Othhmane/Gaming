@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4868852813467726928
+--- !u!1 &204878908398654300
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6422165541393215246}
-  - component: {fileID: 8322356271200002676}
-  - component: {fileID: 8614064152169987860}
-  - component: {fileID: 5568827644434560419}
-  - component: {fileID: 1710915157366402167}
+  - component: {fileID: 2973798317558334771}
+  - component: {fileID: 82987277808438521}
+  - component: {fileID: 9020179005159616028}
+  - component: {fileID: 5089681590960166791}
+  - component: {fileID: 5360566281130186945}
   m_Layer: 0
   m_Name: Trampoline
   m_TagString: Untagged
@@ -20,37 +20,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6422165541393215246
+--- !u!4 &2973798317558334771
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868852813467726928}
+  m_GameObject: {fileID: 204878908398654300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.838, y: 0.176, z: 18.381046}
   m_LocalScale: {x: 1, y: 0.37693, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8729472969716158817}
+  - {fileID: 967455495625774078}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8322356271200002676
+--- !u!33 &82987277808438521
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868852813467726928}
+  m_GameObject: {fileID: 204878908398654300}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8614064152169987860
+--- !u!23 &9020179005159616028
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868852813467726928}
+  m_GameObject: {fileID: 204878908398654300}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5568827644434560419
+--- !u!65 &5089681590960166791
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868852813467726928}
+  m_GameObject: {fileID: 204878908398654300}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -107,26 +107,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1710915157366402167
+--- !u!114 &5360566281130186945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4868852813467726928}
+  m_GameObject: {fileID: 204878908398654300}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07f812956af23d0428d79bf7f2f3841c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 10
---- !u!1001 &2481673667224987503
+--- !u!1001 &6212974907834934768
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6422165541393215246}
+    m_TransformParent: {fileID: 2973798317558334771}
     m_Modifications:
     - target: {fileID: 4652329573806549489, guid: 2ee7f6e77dd8b6a4083726485da5b624,
         type: 3}
@@ -208,9 +208,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee7f6e77dd8b6a4083726485da5b624, type: 3}
---- !u!4 &8729472969716158817 stripped
+--- !u!4 &967455495625774078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6581443949971158542, guid: 2ee7f6e77dd8b6a4083726485da5b624,
     type: 3}
-  m_PrefabInstance: {fileID: 2481673667224987503}
+  m_PrefabInstance: {fileID: 6212974907834934768}
   m_PrefabAsset: {fileID: 0}
